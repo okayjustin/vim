@@ -1,3 +1,4 @@
-# Ignore everything except .vimrc
+# Ignore everything except configs
 *
 !.vimrc
+!.tmux.conf
