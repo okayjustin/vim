@@ -92,7 +92,7 @@ endif
 "Always show current position
 set ruler
 
-" Show relative line numbers
+"Show relative line numbers
 set number
 set relativenumber
 
@@ -141,6 +141,13 @@ set tm=500
 " Add a bit extra margin to the left
 set foldcolumn=1
 
+"Maps for jj to act as Esc
+inoremap jk <Esc>
+inoremap kj <Esc>
+cno jk <C-c>
+cno kj <C-c>
+ino jk <Esc>
+ino kj <Esc>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -283,9 +290,6 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remap VIM 0 to first non-blank character
-map 0 ^
-
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
