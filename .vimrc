@@ -84,9 +84,9 @@ set wildmenu
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+		set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 else
-    set wildignore+=.git\*,.hg\*,.svn\*
+		set wildignore+=.git\*,.hg\*,.svn\*
 endif
 
 "Always show current position
@@ -156,7 +156,7 @@ ino kj <Esc>
 syntax enable 
 
 try
-    colorscheme desert
+		colorscheme desert
 catch
 endtry
 
@@ -164,10 +164,10 @@ set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
+		set guioptions-=T
+		set guioptions-=e
+		set t_Co=256
+		set guitablabel=%M\ %t
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -207,6 +207,9 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
+" Replace tabs with four spaces. Make sure that there is a tab character between
+" the first pair of slashes when you copy this mapping into your .vimrc!
+nnoremap <Leader>rts :%s/	/    /g<CR>
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -268,8 +271,8 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Specify the behavior when switching between buffers 
 try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
+	set switchbuf=useopen,usetab,newtab
+	set stal=2
 catch
 endtry
 
@@ -297,17 +300,17 @@ vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
+	nmap <D-j> <M-j>
+	nmap <D-k> <M-k>
+	vmap <D-j> <M-j>
+	vmap <D-k> <M-k>
 endif
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
+	exe "normal mz"
+	%s/\s\+$//ge
+	exe "normal `z"
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
@@ -378,56 +381,56 @@ map <leader>pp :setlocal paste!<cr>
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
+		exe "menu Foo.Bar :" . a:str
+		emenu Foo.Bar
+		unmenu Foo
 endfunction 
 
 function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
+		let l:saved_reg = @"
+		execute "normal! vgvy"
 
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
+		let l:pattern = escape(@", '\\/.*$^~[]')
+		let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-    if a:direction == 'gv'
-        call CmdLine("Ag \"" . l:pattern . "\" " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    endif
+		if a:direction == 'gv'
+				call CmdLine("Ag \"" . l:pattern . "\" " )
+		elseif a:direction == 'replace'
+				call CmdLine("%s" . '/'. l:pattern . '/')
+		endif
 
-    let @/ = l:pattern
-    let @" = l:saved_reg
+		let @/ = l:pattern
+		let @" = l:saved_reg
 endfunction
 
 
 " Returns true if paste mode is enabled
 function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    endif
-    return ''
+		if &paste
+				return 'PASTE MODE  '
+		endif
+		return ''
 endfunction
 
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
+	 let l:currentBufNum = bufnr("%")
+	 let l:alternateBufNum = bufnr("#")
 
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
+	 if buflisted(l:alternateBufNum)
+		 buffer #
+	 else
+		 bnext
+	 endif
 
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
+	 if bufnr("%") == l:currentBufNum
+		 new
+	 endif
 
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
+	 if buflisted(l:currentBufNum)
+		 execute("bdelete! ".l:currentBufNum)
+	 endif
 endfunction
 
 " Make VIM remember position in file after reopen
