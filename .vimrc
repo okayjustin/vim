@@ -211,6 +211,8 @@ set wrap "Wrap lines
 " the first pair of slashes when you copy this mapping into your .vimrc!
 nnoremap <Leader>rts :%s/	/    /g<CR>
 
+set clipboard=unnamed
+
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
