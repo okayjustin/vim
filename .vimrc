@@ -233,6 +233,15 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " Always turns on virtual edit mode
 set ve=all
 
+" redefine x for virtualEdit so that past end of line, it jumps left to end-of-line
+function! Redefine_x_ForVirtualEdit()
+  if &ve != "" && col('.') >= col('$')
+    normal $
+  endif
+endfu!
+silent! unmap x
+:nnoremap <silent>x x:call Redefine_x_ForVirtualEdit()<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
