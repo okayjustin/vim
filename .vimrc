@@ -208,6 +208,9 @@ set wrap "Wrap lines
 " the first pair of slashes when you copy this mapping into your .vimrc!
 nnoremap <Leader>rts :%s/	/    /g<CR>
 
+" Retab the file
+nnoremap <Leader>ft :normal gg=G
+
 " Retab the current line or visual selection to a specific tabstop
 noremap <Leader>1 :normal ^d0i	j
 noremap <Leader>2 :normal ^d0i		j
@@ -245,6 +248,9 @@ silent! unmap x
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Mouse scrolling
+set mouse=nicr
+
 " Treat long lines as break lines (useful when moving around in them)
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
@@ -341,6 +347,22 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Start vim-plug manager 
+"call plug#begin()
+"
+"" Extended VIM scripting library
+"Plug 'xolox/vim-misc'
+"
+"" Auto update tags globally
+"Plug 'xolox/vim-easytags'
+"
+"call plug#end()
+"
+"let g:easytags_syntax_keyword = 'always'
+"let g:easytags_async = 1
+"let g:easytags_autorecurse = 0
+"let b:easytags_auto_highlight = 0
+
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
@@ -405,11 +427,3 @@ function! <SID>BufcloseCloseIt()
 		 execute("bdelete! ".l:currentBufNum)
 	 endif
 endfunction
-
-" Make VIM remember position in file after reopen
-" if has("autocmd")
-"   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"endif
-
-
-
