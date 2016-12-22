@@ -209,7 +209,7 @@ set wrap "Wrap lines
 nnoremap <Leader>rts :%s/	/    /g<CR>
 
 " Retab the file
-nnoremap <Leader>ft :normal gg=G
+nnoremap <Leader>ft :normal gg=G<CR>
 
 " Retab the current line or visual selection to a specific tabstop
 noremap <Leader>1 :normal ^d0i	j
@@ -362,6 +362,9 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 "let g:easytags_async = 1
 "let g:easytags_autorecurse = 0
 "let b:easytags_auto_highlight = 0
+
+" Search for tags file in upper directories
+set tags=tags;/
 
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
