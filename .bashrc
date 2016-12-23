@@ -1,4 +1,7 @@
+alias srcbash='source ~/.bashrc'
 alias ls='ls -l'
-alias robo='cd ~/Documents/Github/roborodentia2017/firmware'
+alias robo='cd ~/Documents/Github/roborodentia2017'
 alias gcc='gcc-4.9'
-
+alias ctags_update='ctags -a -R --excmd=n --exclude=arm --exclude=mechanical --exclude=firmware/libraries'
+alias ctags_new='ctags -R --excmd=n --exclude=mechanical'
+alias vim='vim -p'
