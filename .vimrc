@@ -282,6 +282,7 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
+map <leader>tt :tabnext<cr>
 map <leader>t<leader> :tabnext 
 
 " Let 'tl' toggle between this and the last accessed tab
