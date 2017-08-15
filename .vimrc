@@ -255,10 +255,6 @@ set mouse=nicr
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
-
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
@@ -373,7 +369,9 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-
+" Paste without replacing register with deleted text
+"xnoremap <silent> p p:let @*=@0<CR>
+noremap <Leader>p ciw<C-R>0<ESC>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
