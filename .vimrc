@@ -201,7 +201,7 @@ set lbr
 set tw=500
 
 set ai "Auto indent
-set si "Smart indent
+"set si "Smart indent
 set wrap "Wrap lines
 
 " Replace tabs with four spaces. Make sure that there is a tab character between
